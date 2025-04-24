@@ -24,9 +24,9 @@ class Post(UserMixin,db.Model): #flask_loginモジュールのUserMixinクラス
     #⓶is_active	アカウントが有効かどうか (True or False)⓷is_anonymous 匿名ユーザーかどうか (False にする)④get_id()	ユーザーの識別IDを取得（セッション管理で使う）
     __tablename__ = 'office'  # 必要ならテーブル名を明示的に指定
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(10), nullable=False)
+    username = db.Column(db.String(200), nullable=False)
     pw = db.Column(db.String(200), nullable=False)
-    office_name = db.Column(db.String(10), nullable=False)
+    office_name = db.Column(db.String(20), nullable=False)
 
 #@ユーザーが再読み込みする際にlogin_manager.user_loaderがsessionから主キーを読み込みuser_idに引数を渡す
 #returnとしてPost.query.get(user_id)で取得した主キーに対応したユーザー情報をcurrent_user関数に返す
@@ -36,9 +36,9 @@ def load_user(user_id):
     return Post.query.get(user_id)
 
 # postgreSQLでテーブル作成コード（ターミナルでpython -m flaskr.master_login)
-# with app.app_context():
-#     db.create_all()  # テーブルを作成
-#     print("テーブル作成完了！")
+with app.app_context():
+    db.create_all()  # テーブルを作成
+    print("テーブル作成完了！")
 
 today =date.today()
 week = ["（月）", "（火）", "（水）", "（木）", "（金）", "（土）", "（日）"]

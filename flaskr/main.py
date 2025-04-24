@@ -190,9 +190,10 @@ def title():
     # master_login.pyからget_office_name関数（ログインした事業所の事業所名を取得する関数）をインポート利用
     office_name = get_office_name(current_user.id)
     
+    # 第４ユニット用
     # ◎指定日にちでマイルストーン振り返りメッセージの表示
-    special_days = [3, 4, 5, 6, 19, 20, 21, 22, 28]
-    message = "マイルストーン振り返りの期間です" if today.day in special_days else ""
+    # special_days = [3, 4, 5, 6, 19, 20, 21, 22, 28]
+    # message = "マイルストーン振り返りの期間です" if today.day in special_days else ""
     
     # ◎タスクの表示とタスクボタン関連について
     #POSTの場合にその情報を取得してスプレッドシートに反映
@@ -271,16 +272,14 @@ def title():
                     # deadline_dateがNoneでない場合にのみ、比較処理を行う
                     if deadline_date:
                         # 表示条件
-                        is_today_ago = today <= deadline_date <= three_days_ago
+                        is_today_ago = deadline_date <= three_days_ago
                         is_target_office = office == "全事業所" or office == office_name
                         is_not_done = is_done != "〇"
 
                         if is_today_ago and is_target_office and is_not_done:
                             cell_rw = idx
                             today_tasks.append((cell_rw, deadline, task_name, task_url, office))
-                    else:
-                        # deadlineがNoneのときはスキップ（または他の処理があればそれを行う）
-                        continue
+
 
                 # 表示セット
                 if today_tasks:
@@ -292,7 +291,7 @@ def title():
 
                 return render_template(
                     "title.html",
-                    message=message,
+                    # message=message,　第４ユニット用
                     today=today_full,
                     office_name=office_name,
                     task=task,
@@ -314,6 +313,7 @@ def title():
     # データ入れる様の変数を定義
     today_tasks = []
     
+    # スプレッドシートの情報がまだ何も入ってない時エラーを防ぐ
     if len(data) < 2:
         task = None
         coment = "本日のタスクはありません"
@@ -332,7 +332,7 @@ def title():
             office = row[3]
             is_done = row[office_index] if len(row) > office_index else ""
             
-            # 日付の入力の確認（前後の空白除いてdatetime、date化する）strip関数：前後の空白を取り除く関数
+            # # 日付の入力の確認（前後の空白除いてdatetime、date化する）strip関数：前後の空白を取り除く関数
             if deadline and deadline.strip():
                 try:
                     deadline_date = datetime.strptime(deadline.strip(), "%Y/%m/%d").date()
@@ -345,17 +345,14 @@ def title():
             # deadline_dateがNoneでない場合にのみ、比較処理を行う
             if deadline_date:
                 # 表示条件
-                is_today_ago = today <= deadline_date <= three_days_ago
+                is_today_ago = deadline_date <= three_days_ago
                 is_target_office = office == "全事業所" or office == office_name
                 is_not_done = is_done != "〇"
 
                 if is_today_ago and is_target_office and is_not_done:
                     cell_rw = idx
                     today_tasks.append((cell_rw, deadline, task_name, task_url, office))
-            else:
-                # deadlineがNoneのときはスキップ（または他の処理があればそれを行う）
-                continue
-
+     
         # 表示セット
         if today_tasks:
             task = today_tasks
@@ -366,7 +363,7 @@ def title():
           
     return render_template(
         "title.html",
-        message=message,
+        # message=message,第４ユニット用
         today=today_full,
         office_name=office_name,
         task=task,

@@ -18,8 +18,8 @@
             <img class="logo" src="{{url_for('static', filename = 'image/logo.png')}}" alt="ロゴ画像">
             </a>
             <nav>
-                <a href="{{ url_for('form') }}">業務報告をする</a>
-                <a href="{{ url_for('spread_link') }}" target="_blank">業務報告を見る</a>
+                <!-- <a href="{{ url_for('form') }}">業務報告をする</a>
+                <a href="{{ url_for('spread_link') }}" target="_blank">業務報告を見る</a> -->
                 <a href="https://chouseisan.com" target="_blank">調整さん</a>
                 <a href="{{ url_for('task_display')}}">タスク一覧</a>
                 <a href="#">ユニットスプレッドシート</a>
@@ -35,11 +35,12 @@
         <p class="main_today" > {{today}} </p>
         <h1 class="main_office_name" >VP{{office_name}} お知らせボード</h1>
     
-        {% if message %}
+        <!-- 第４ユニット用 -->
+        <!-- {% if message %}
         <h1 class="main_milestone">〇{{message}}（２日、１０日定期）</h1>
         {% else %}
         {% endif %}
-    
+     -->
         
         {% if task %}
         {% for cell_rw, task_deadline, task_value, url, office in task %}

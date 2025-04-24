@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='master.css') }}">
+    <title>ユニットリンク|管理者画面</title>
 </head>
 <body>
 <h1>管理者画面</h1>
     <h1>{{login}}</h1>
     <form method="post" action="{{ url_for('register') }}">
     <table border="1">
+        <h2>事業所新規登録</h2>
         <tr>
             <th>ユーザー名</th>
             <th>パスワード</th>
@@ -36,8 +38,43 @@
 
     <input type="submit" value="新規登録">
     </form>
+
+    <form method="post" action="{{ url_for('master') }}">
+        <h2>タスク管理入力</h2>
+        <table border="1">
+            <tr>
+                <th>期限</th>
+                <th>タスク内容</th>
+                <th>URL</th>
+                <th>事業所選択</th>
+            </tr>
+            <tr>
+                <td><input type="date" name="deadline" required></td>
+                <td><input type="text" name="task" required></td>
+                <td><input type="text" name="task_url"></td>
+                <td>
+                    <!-- プルダウンの作成 -->
+                    <select name="select_office" required>
+                        <option value="">-- 選択してください --</option>
+                        <option value="全事業所">全事業所</option>
+                        <option value="八尾">八尾</option>
+                        <option value="稲葉">稲葉</option>
+                        <option value="プラス">プラス</option>
+                        <option value="立花">立花</option>
+                        <option value="交野">交野</option>
+                        <option value="高井田">高井田</option>
+                        <option value="御陵通">御陵通</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+
+
+        <button type="submit">タスク登録</button>
+   </form>
     
     <form method="post" action="{{ url_for('update') }}">
+        <h2>登録事業所一覧 ※基本的には触らない</h2>
         <table border="1">
             <tr>
                 <th>ID(主キー)</th>
@@ -65,38 +102,8 @@
     </form>
     
 
-    <h1>タスク管理入力</h1>
-    <form method="post" action="{{ url_for('master') }}">
-        <table border="1">
-            <tr>
-                <th>期限</th>
-                <th>タスク内容</th>
-                <th>URL</th>
-                <th>事業所選択</th>
-            </tr>
-            <tr>
-                <td><input type="date" name="deadline" required></td>
-                <td><input type="text" name="task" required></td>
-                <td><input type="text" name="task_url"></td>
-                <td>
-                    <!-- プルダウンの作成 -->
-                    <select name="select_office" required>
-                        <option value="">-- 選択してください --</option>
-                        <option value="全事業所">全事業所</option>
-                        <option value="田島">田島</option>
-                        <option value="高殿">高殿</option>
-                        <option value="鶴橋">鶴橋</option>
-                        <option value="鶴橋">八尾</option>
-                        <option value="鶴橋">稲葉</option>
-                        <option value="鶴橋">高井田</option>
-                    </select>
-                </td>
-            </tr>
-        </table>
 
 
-        <button type="submit">タスク登録</button>
-   </form>
 
    <a href="{{ url_for('logout') }}">ログアウト </a>
 </body>

@@ -1,0 +1,76 @@
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background-color: #f5f7fa;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+  }
+
+  h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
+  }
+
+  form {
+    max-width: 900px;
+    margin: 30px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+
+  th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+  }
+
+  th {
+    background-color: #2c3e50;
+    color: white;
+  }
+
+  input[type="text"], input[type="date"], select {
+    width: 90%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+  }
+
+  input[readonly] {
+    background-color: #eee;
+    color: #666;
+  }
+
+  input[type="submit"], button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    background-color: #2980b9;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  input[type="submit"]:hover, button:hover {
+    background-color: #1f5e8b;
+  }
+
+  div {
+    margin: 10px 0;
+    color: red;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  select {
+    background-color: white;
+  }
