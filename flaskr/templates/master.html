@@ -7,7 +7,10 @@
     <title>ユニットリンク|管理者画面</title>
 </head>
 <body>
-<h1>管理者画面</h1>
+<h1>管理者画面</h1>    
+<div class="logout-container">
+    <a href="{{ url_for('logout') }}" class="logout-button">ログアウト</a>
+  </div>
     <h1>{{login}}</h1>
     <form method="post" action="{{ url_for('register') }}">
     <table border="1">
@@ -101,10 +104,6 @@
         </table>
     </form>
     
-
-
-
-
-   <a href="{{ url_for('logout') }}">ログアウト </a>
+ 
 </body>
 </html>
