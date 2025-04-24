@@ -51,6 +51,7 @@
                 <th>URL</th>
                 <th>事業所選択</th>
             </tr>
+            
             <tr>
                 <td><input type="date" name="deadline" required></td>
                 <td><input type="text" name="task" required></td>
@@ -71,7 +72,9 @@
                 </td>
             </tr>
         </table>
-
+        <div class="report-link-container">
+            <a href="{{ url_for('spread_link_2') }}" target="_blank" class="report-link-button">全事業所タスク一覧を見る</a>
+          </div>
 
         <button type="submit">タスク登録</button>
    </form>

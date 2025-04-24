@@ -374,6 +374,9 @@ def title():
 @app.route("/spread_link")
 def spread_link():
     return redirect(spreadsheet_url)
+@app.route("/spread_link_2")
+def spread_link_2():
+    return redirect(spreadsheet_url_2)
 
 # task.htmlにタスクを表示
 @app.route("/task_display")

@@ -96,3 +96,24 @@ body {
     background-color: #c0392b;
     transform: scale(1.05);
   }
+
+  .report-link-container {
+    margin-top: 15px;
+    text-align: center;
+  }
+  
+  .report-link-button {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: palevioletred;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .report-link-button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+  }
